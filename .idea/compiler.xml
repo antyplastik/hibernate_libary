@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="pl.hibernate.library.database.main" target="1.8" />
       <module name="pl.hibernate.library.database.test" target="1.8" />
+      <module name="pl.hibernate.library.library.main" target="1.8" />
+      <module name="pl.hibernate.library.library.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
