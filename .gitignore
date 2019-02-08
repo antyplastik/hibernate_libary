@@ -113,3 +113,6 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/maven,gradle,intellij
+
+# Hibernate Config
+/main/resources/hibernate.cfg.xml
