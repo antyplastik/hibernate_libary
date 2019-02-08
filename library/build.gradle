@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+
 }
 
 group 'pl.hibernate.library'
@@ -13,7 +14,11 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
-    provided group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+    // https://mvnrepository.com/artifact/joda-time/joda-time
+    compile group: 'joda-time', name: 'joda-time', version: '2.10.1'
+    // https://mvnrepository.com/artifact/joda-time/joda-time-hibernate
+    compile group: 'joda-time', name: 'joda-time-hibernate', version: '1.4'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.1.Final'
     // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
     compile group: 'org.hibernate', name: 'hibernate-validator', version: '6.0.14.Final'
