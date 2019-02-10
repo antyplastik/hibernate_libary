@@ -1,4 +1,4 @@
-package library.model;
+package com.library.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,10 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "customers")
 public class Customer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Length(max = 20)
@@ -27,7 +28,7 @@ public class Customer {
     @Length(max = 40)
     private String email;
 
-    @OneToMany(mappedBy = "Customer", orphanRemoval = true, cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "customer", orphanRemoval = true, cascade = {CascadeType.PERSIST})
     private List<Rent> rents;
 
 }

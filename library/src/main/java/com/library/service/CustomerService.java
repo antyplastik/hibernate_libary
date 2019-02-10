@@ -1,6 +1,6 @@
-package library.service;
+package com.library.service;
 
-import library.model.Customer;
+import com.library.model.Customer;
 import org.hibernate.Session;
 
 public interface CustomerService {

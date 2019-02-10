@@ -9,12 +9,17 @@
         <property name="connection.url">jdbc:mysql://localhost:3306/libraryDB</property>
         <property name="connection.username">root</property>
         <property name="connection.password">1234</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Wyswietlaj w konsoli wszystkie kody SQL - bezcenne przy debugowaniu -->
         <property name="show_sql">true</property>
         <!-- Przy starcie aplikacji usun istniejaca baze i utworz ja od nowa -->
-        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- Klasy mapowane -->
-        <mapping class="pl.sda.javawwa13.hibernatefun.library.model.SimpleMovie"/>
+        <mapping class="com.library.model.BookInfo"/>
+        <mapping class="com.library.model.Customer"/>
+        <mapping class="com.library.model.AuthorInfo"/>
+        <mapping class="com.library.model.BookCopy"/>
+        <mapping class="com.library.model.Rent"/>
 
     </session-factory>
 </hibernate-configuration>

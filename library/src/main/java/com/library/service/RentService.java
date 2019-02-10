@@ -1,7 +1,7 @@
-package library.service;
+package com.library.service;
 
-import library.model.BookInfo;
-import library.model.Customer;
+import com.library.model.BookInfo;
+import com.library.model.Customer;
 import org.hibernate.Session;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package library.model;
+package com.library.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,22 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.joda.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "rents")
 public class Rent {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
     private Customer customer;
 
+    @ManyToOne
     private BookCopy bookCopy;
 
     private LocalDate startDate;

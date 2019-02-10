@@ -1,4 +1,4 @@
-package library.model;
+package com.library.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,10 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "bookInfo")
 public class BookInfo {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -27,10 +28,10 @@ public class BookInfo {
     @Length(max = 250)
     private String description;
 
-    @OneToMany
+    @ManyToOne
     private AuthorInfo author;
 
-    @OneToMany(mappedBy = "BookInfo", orphanRemoval = true, cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "bookInfo", orphanRemoval = true, cascade = {CascadeType.PERSIST})
     private List<BookCopy> bookCopies;
 
 }

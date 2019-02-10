@@ -15,7 +15,11 @@
         <!-- Przy starcie aplikacji usun istniejaca baze i utworz ja od nowa -->
         <property name="hbm2ddl.auto">create-drop</property>
         <!-- Klasy mapowane -->
-        <mapping class="pl.sda.javawwa13.hibernatefun.library.model.SimpleMovie"/>
+        <mapping class="com.library.model.BookInfo"/>
+        <mapping class="com.library.model.Customer"/>
+        <mapping class="com.library.model.AuthorInfo"/>
+        <mapping class="com.library.model.BookCopy"/>
+        <mapping class="com.library.model.Rent"/>
 
     </session-factory>
 </hibernate-configuration>
