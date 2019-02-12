@@ -5,13 +5,13 @@ import org.hibernate.Session;
 
 public interface BookInfoService {
 
-    boolean addNewBookCopy(Session session, BookInfo... book);
+    boolean addNewBookCopy(BookInfo... book);
 
-    boolean updateBookInfo(Session session, BookInfo book);
+    boolean updateBookInfo(BookInfo book);
 
-    BookInfo findBookByTitle(Session session, String title);
+    BookInfo findBookByTitle(String title);
 
-    BookInfo findBookByISBN(Session session, String isbn);
+    BookInfo findBookByISBN(String isbn);
 
-    BookInfo findBookByTheAuthor(Session session, String name, String lastName);
+    BookInfo findBookByTheAuthor(String name, String lastName);
 }

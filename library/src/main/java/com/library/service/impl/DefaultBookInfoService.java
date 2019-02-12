@@ -6,27 +6,27 @@ import org.hibernate.Session;
 
 public class DefaultBookInfoService implements BookInfoService {
     @Override
-    public boolean addNewBookCopy(Session session, BookInfo... book) {
+    public boolean addNewBookCopy(BookInfo... book) {
         return false;
     }
 
     @Override
-    public boolean updateBookInfo(Session session, BookInfo book) {
+    public boolean updateBookInfo(BookInfo book) {
         return false;
     }
 
     @Override
-    public BookInfo findBookByTitle(Session session, String title) {
+    public BookInfo findBookByTitle(String title) {
         return null;
     }
 
     @Override
-    public BookInfo findBookByISBN(Session session, String isbn) {
+    public BookInfo findBookByISBN(String isbn) {
         return null;
     }
 
     @Override
-    public BookInfo findBookByTheAuthor(Session session, String name, String lastName) {
+    public BookInfo findBookByTheAuthor(String name, String lastName) {
         return null;
     }
 }

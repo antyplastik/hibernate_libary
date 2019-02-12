@@ -5,11 +5,11 @@ import org.hibernate.Session;
 
 public interface CustomerService {
 
-    boolean addNewUser(Session session, Customer newUser);
+    boolean addNewUser(Customer newUser);
 
-    boolean updateUser(Session session, Customer customer);
+    boolean updateUser(Customer customer);
 
-    boolean deleteUser(Session session, Customer customer);
+    boolean deleteUser(Customer customer);
 
-    Customer findUser(Session session, Customer user);
+    Customer findUser(Customer user);
 }
