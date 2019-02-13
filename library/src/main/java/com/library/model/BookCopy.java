@@ -18,7 +18,7 @@ import java.util.List;
 public class BookCopy {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @NotNull

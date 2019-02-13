@@ -1,8 +1,8 @@
 package com.library.service;
 
 import com.library.model.AuthorInfo;
-import com.library.model.Customer;
-import org.hibernate.Session;
+
+import java.util.List;
 
 public interface AuthorInfoService {
 
@@ -12,6 +12,6 @@ public interface AuthorInfoService {
 
     boolean deleteAuthor(AuthorInfo newAuthor);
 
-    AuthorInfo findAuthor(AuthorInfo newAuthor);
+    List<AuthorInfo> findAuthor(String name, String lastName);
 
 }

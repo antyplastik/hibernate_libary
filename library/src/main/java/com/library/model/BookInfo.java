@@ -19,7 +19,7 @@ import java.util.List;
 public class BookInfo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @NotNull

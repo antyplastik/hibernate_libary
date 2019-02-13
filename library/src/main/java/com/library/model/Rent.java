@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table(name = "rents")
 public class Rent {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
