@@ -1,17 +1,20 @@
 package com.library.service;
 
 import com.library.model.BookInfo;
-import org.hibernate.Session;
+
+import java.util.List;
 
 public interface BookInfoService {
 
-    boolean addNewBookCopy(BookInfo... book);
+    boolean addNewBookInfo(BookInfo bookInfo);
 
     boolean updateBookInfo(BookInfo book);
 
-    BookInfo findBookByTitle(String title);
+    BookInfo findBookInfo (String title);
+
+    List<BookInfo> findBookByTitle(String title);
 
     BookInfo findBookByISBN(String isbn);
 
-    BookInfo findBookByTheAuthor(String name, String lastName);
+    List<BookInfo> findBookByTheAuthor(String name, String lastName);
 }

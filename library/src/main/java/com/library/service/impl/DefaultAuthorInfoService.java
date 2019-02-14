@@ -38,8 +38,8 @@ public class DefaultAuthorInfoService implements AuthorInfoService {
 
             if (listSize == 1) {
                 session.save(newAuthor);
-                tx.commit();
                 result = true;
+                tx.commit();
 
             } else if (listSize == null || listSize == 0) {
                 tx.rollback();
@@ -64,8 +64,8 @@ public class DefaultAuthorInfoService implements AuthorInfoService {
 
             if (listSize == 1) {
                 session.delete(newAuthor);
-                tx.commit();
                 result = true;
+                tx.commit();
 
             } else if (listSize == null || listSize == 0) {
                 tx.rollback();

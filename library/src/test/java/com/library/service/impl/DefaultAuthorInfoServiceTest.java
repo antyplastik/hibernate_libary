@@ -2,7 +2,6 @@ package com.library.service.impl;
 
 import com.library.model.AuthorInfo;
 import com.library.service.AuthorInfoService;
-import com.library.util.SessionUtil;
 import org.hibernate.Session;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -14,7 +13,6 @@ import java.util.List;
 public class DefaultAuthorInfoServiceTest {
 
     AuthorInfoService authorInfoService;
-    Session session;
 
     @BeforeMethod
     public void setUp() {

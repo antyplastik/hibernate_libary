@@ -1,26 +1,27 @@
 package com.library.service.impl;
 
+import com.library.model.AuthorInfo;
 import com.library.model.BookInfo;
 import com.library.service.BookInfoService;
-import com.library.util.SessionUtil;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
-
 public class DefaultBookInfoServiceTest {
 
-    BookInfoService bis;
-    SessionUtil session;
+    BookInfoService bookInfoService;
 
     @BeforeMethod
     public void setUp() {
-
+        bookInfoService = new DefaultBookInfoService();
     }
 
     @Test
     public void testAddNewBookCopy() {
+        boolean addedBookToDB = bookInfoService.addNewBookInfo(new BookInfo(null,"Ogniem i Mieczem","Test description",
+                new AuthorInfo(null,"Henryk", "Sienkiewicz",null), null));
 
+        Assert.assertTrue(addedBookToDB);
     }
 
     @Test
@@ -29,6 +30,8 @@ public class DefaultBookInfoServiceTest {
 
     @Test
     public void testFindBookByTitle() {
+
+//        List<BookInfo> foundBook = bookInfoService.findBookByTheAuthor();
     }
 
     @Test
