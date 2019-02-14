@@ -3,16 +3,11 @@ package com.library.service.impl;
 import com.library.model.AuthorInfo;
 import com.library.service.AuthorInfoService;
 import com.library.util.SessionUtil;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -24,9 +19,6 @@ public class DefaultAuthorInfoServiceTest {
     @BeforeMethod
     public void setUp() {
         authorInfoService = new DefaultAuthorInfoService();
-        try(Session session = SessionUtil.getSession()){
-            session.createSQLQuery("TRUNCATE TABLE author");
-        }
     }
 
     @Test
@@ -39,14 +31,21 @@ public class DefaultAuthorInfoServiceTest {
     @Test
     public void testUpdateAuthor() {
         boolean oldRecord = authorInfoService.addNewAuthor(setDefaultAuthor());
+        boolean oldRecordUpdate = authorInfoService.updateAuthor(setDefaultAuthor());
 
-        boolean updated = authorInfoService.updateAuthor(new AuthorInfo((long) 1, "Andrzej", "Sapkowski", null));
+        boolean updated;
+        try {
+            updated = authorInfoService.updateAuthor(new AuthorInfo((long) 1, "Andrzej", "Sapkowski", null));
+        } catch (IllegalArgumentException e){
+            updated = false;
+        }
 
-        Assert.assertTrue(oldRecord);
-        Assert.assertTrue(updated);
+        Assert.assertTrue(oldRecord, "[ERROR] Problems with add to db");
+        Assert.assertTrue(oldRecordUpdate, "[ERROR] Can't update old author");
+        Assert.assertFalse(updated, "[ERROR] Can't update new author");
     }
 
-//    @Ignore
+    //    @Ignore
     @Test
     public void testDeleteAuthor() {
         boolean oldRecord = authorInfoService.addNewAuthor(setDefaultAuthor());

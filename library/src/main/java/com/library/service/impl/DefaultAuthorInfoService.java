@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public class DefaultAuthorInfoService implements AuthorInfoService {
     @Override
@@ -20,7 +21,7 @@ public class DefaultAuthorInfoService implements AuthorInfoService {
                 tx.commit();
                 return true;
             }
-//            tx.rollback();
+            tx.rollback();
         }
 
         return false;
@@ -28,19 +29,54 @@ public class DefaultAuthorInfoService implements AuthorInfoService {
 
     @Override
     public boolean updateAuthor(AuthorInfo newAuthor) {
+        boolean result = false;
         try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
+            List<AuthorInfo> findAuthor = findAuthor(newAuthor.getName(), newAuthor.getLastName());
 
+            Integer listSize = findAuthor.size();
+
+            if (listSize == 1) {
+                session.save(newAuthor);
+                tx.commit();
+                result = true;
+
+            } else if (listSize == null || listSize == 0) {
+                tx.rollback();
+                throw new IllegalArgumentException("[ERROR] No author in the database");
+
+            } else {
+                tx.rollback();
+                throw new IllegalArgumentException("[ERROR] There is more than one such author in the database");
+            }
         }
-        return false;
+        return result;
     }
 
     @Override
     public boolean deleteAuthor(AuthorInfo newAuthor) {
+        boolean result;
         try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
 
+            List<AuthorInfo> foundAuthor = findAuthor(newAuthor.getName(), newAuthor.getLastName());
+            Integer listSize = foundAuthor.size();
 
+            if (listSize == 1) {
+                session.delete(newAuthor);
+                tx.commit();
+                result = true;
+
+            } else if (listSize == null || listSize == 0) {
+                tx.rollback();
+                throw new IllegalArgumentException("[ERROR] No author in the database");
+
+            } else {
+                tx.rollback();
+                throw new IllegalArgumentException("[ERROR] There is more than one such author in the database");
+            }
         }
-        return false;
+        return result;
     }
 
     @Override
