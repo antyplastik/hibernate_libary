@@ -38,10 +38,27 @@ public class DefaultBookInfoService implements BookInfoService {
 
     @Override
     public boolean updateBookInfo(BookInfo book) {
+        boolean result = false;
+        try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
 
+            BookInfo bookInfoFromDB = findBookInfo(book.getTitle());
 
-
-        return false;
+            if (bookInfoFromDB != null) {
+                if (bookInfoFromDB.equals(book)) {
+                    result = false;
+                } else {
+                    book.setId(bookInfoFromDB.getId());
+                    session.update(book);
+                    tx.commit();
+                    result = true;
+                }
+            } else {
+                tx.rollback();
+                throw new IllegalArgumentException("[ERROR] There is no such book in the database");
+            }
+        }
+        return result;
     }
 
     @Override

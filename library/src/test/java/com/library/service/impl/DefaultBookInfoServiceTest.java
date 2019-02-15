@@ -37,10 +37,12 @@ public class DefaultBookInfoServiceTest {
         AuthorInfo author = new AuthorInfo(null,"Henryk","Sienkiewicz",null);
         AuthorInfoService ais = new DefaultAuthorInfoService();
         boolean addNewAuthor = ais.addNewAuthor(author);
-
+//        bookToUpdate.setDescription(null);
         bookToUpdate.setAuthor(author);
 
         boolean updateBookInfoService = bookInfoService.updateBookInfo(bookToUpdate);
+
+        BookInfo updatedBook = bookInfoService.findBookInfo(bookToUpdate.getTitle());
 
         Assert.assertTrue(addedBookToDB);
         Assert.assertTrue(addNewAuthor);
