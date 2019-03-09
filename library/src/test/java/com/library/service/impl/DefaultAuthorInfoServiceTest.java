@@ -95,6 +95,8 @@ public class DefaultAuthorInfoServiceTest {
         AuthorInfo authorInfo = new AuthorInfo(null, authorName,authorLastname,bookInfoService.findBookByTitle(bookTitle));
 
         List<BookInfo> foundBook = authorInfoService.findBookByTheAuthor("Henryk","Sienkiewicz");
+
+        //comment for demoBranch
     }
 
 }
