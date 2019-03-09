@@ -75,16 +75,12 @@ public class DefaultBookInfoService implements BookInfoService {
 
     @Override
     public List<BookInfo> findBookByTitle(String title) {
+
         return null;
     }
 
     @Override
     public BookInfo findBookByISBN(String isbn) {
-        return null;
-    }
-
-    @Override
-    public List<BookInfo> findBookByTheAuthor(String name, String lastName) {
         return null;
     }
 }

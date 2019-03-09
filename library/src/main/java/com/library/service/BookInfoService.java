@@ -15,6 +15,4 @@ public interface BookInfoService {
     List<BookInfo> findBookByTitle(String title);
 
     BookInfo findBookByISBN(String isbn);
-
-    List<BookInfo> findBookByTheAuthor(String name, String lastName);
 }

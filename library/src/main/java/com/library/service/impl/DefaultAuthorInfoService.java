@@ -1,12 +1,14 @@
 package com.library.service.impl;
 
 import com.library.model.AuthorInfo;
+import com.library.model.BookInfo;
 import com.library.service.AuthorInfoService;
 import com.library.util.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -93,5 +95,18 @@ public class DefaultAuthorInfoService implements AuthorInfoService {
         }
         System.out.println("hello");
         return resultList;
+    }
+
+    @Override
+    public List<BookInfo> findBookByTheAuthor(String name, String lastName) {
+        List<BookInfo> books = new ArrayList<>();
+        List<AuthorInfo> authorList = findAuthor(name, lastName);
+
+        for (AuthorInfo author : authorList) {
+            for (BookInfo bookInfo : author.getBooks())
+                books.add(bookInfo);
+        }
+
+        return null;
     }
 }

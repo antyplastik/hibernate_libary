@@ -1,6 +1,7 @@
 package com.library.service.impl;
 
 import com.library.model.AuthorInfo;
+import com.library.model.BookInfo;
 import com.library.service.AuthorInfoService;
 import org.hibernate.Session;
 import org.testng.Assert;
@@ -79,6 +80,21 @@ public class DefaultAuthorInfoServiceTest {
         newAuthor.setName("Henryk");
         newAuthor.setLastName("Sienkiewicz");
         return newAuthor;
+    }
+
+    @Test
+    public void testFindBookByTheAuthor() {
+        String authorName = "Henryk";
+        String authorLastname = "Sienkiewicz";
+        String bookTitle = "Ogniem i Mieczem";
+
+        DefaultBookInfoService bookInfoService = new DefaultBookInfoService();
+        boolean addedBookToDB = bookInfoService.addNewBookInfo(new BookInfo(null,bookTitle,"Test description",
+                null, null));
+
+        AuthorInfo authorInfo = new AuthorInfo(null, authorName,authorLastname,bookInfoService.findBookByTitle(bookTitle));
+
+        List<BookInfo> foundBook = authorInfoService.findBookByTheAuthor("Henryk","Sienkiewicz");
     }
 
 }

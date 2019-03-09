@@ -49,21 +49,12 @@ public class DefaultBookInfoServiceTest {
         Assert.assertTrue(updateBookInfoService);
     }
 
-
     @Test
     public void testFindBookByTitle() {
-
-
-//        List<BookInfo> foundBook = bookInfoService.findBookByTheAuthor();
-
 
     }
 
     @Test
     public void testFindBookByISBN() {
-    }
-
-    @Test
-    public void testFindBookByTheAuthor() {
     }
 }
